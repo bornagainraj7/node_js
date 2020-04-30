@@ -26,6 +26,7 @@ let getAllBlog =(req,res) =>
 //function to read a single blog
 
 let viewByBlogId =(req,res) => {
+    console.log(req.user)
 
     BlogModel.findOne({'blogId':req.params.blogId},(err,result) =>{
 
