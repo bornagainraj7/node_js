@@ -2,10 +2,20 @@
 const express = require('express')
 const appConfig = require('./config/appConfig')
 const fs =require('fs')
-const mongoose= require('mongoose')
+const mongoose= require('mongoose');
+const Blog =require('./models/Blog');
+const cookieParser=require('cookie-parser');
+const bodyParser = require('body-parser');
 
 //creating instance of application
 const app = express()
+
+//middle-wares
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:false}))
+app.use(cookieParser())
+
 //declaring the port
 let routesPath ='./routes';
 fs.readdirSync(routesPath).forEach(function(file) {
@@ -17,6 +27,12 @@ fs.readdirSync(routesPath).forEach(function(file) {
     }
 
 });
+//Bootstrap Models
+let modelsPath= './models'
+fs.readdirSync(modelsPath).forEach(function(file) {
+    if(~file.indexOf('.js')) require(modelsPath+'/'+file)
+});
+
 
 //listing the server
 app.listen(appConfig.port, () =>{ console.log(`Example app listening at http://localhost:${appConfig.port}`)

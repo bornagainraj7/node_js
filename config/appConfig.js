@@ -5,7 +5,7 @@ appConfig.allowedCorsOrigin = "*";
 appConfig.env ="dev";
 appConfig.db = {
 
-    uri:"mongodb://test:test@127.0.0.1:27017/blogApp",
+    uri:"mongodb://127.0.0.1:27017/blogApp",
 }
 
 appConfig.apiVersion ="/api/v1";
