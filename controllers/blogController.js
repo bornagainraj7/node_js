@@ -14,11 +14,11 @@ let getAllBlog =(req,res) =>
             if(err){
                 console.log(err);
                 res.send(err);
-            }else if(check.isEmpty(result == undefined||result==''||result==null)) {
+            }else if (result == undefined || result == '' || result == null) {
                 console,log('no blog found');
-                res.send("No Blog Found")
+                res.send("No Blog Found");
             }else {
-                res.send(result)
+                res.send(result);
             }
         })
 }//end get all blog
